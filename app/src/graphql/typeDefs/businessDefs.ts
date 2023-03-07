@@ -1,10 +1,9 @@
-export const userDefs = `
-type User{
+export const businessDefs = `
+  type Business{
     id: ID! @id
     name: String!
-    email: String!
-    ownedBusiness: [Business!]! @relationship(type: "OWNS", direction: OUT)
+    owner: User @relationship(type: "OWNS", direction: IN)
     createdAt: DateTime! @timestamp(operations: [CREATE])
     updatedAt: DateTime! @timestamp(operations: [CREATE, UPDATE])
-}
-`;
+  }
+`
