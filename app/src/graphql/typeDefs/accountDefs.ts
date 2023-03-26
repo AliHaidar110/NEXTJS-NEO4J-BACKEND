@@ -14,5 +14,6 @@ export const accountDefs = `
     session_state: String!
     oauth_token_secret: String!
     oauth_token: String!
+    user: User! @relationship(type: "HAS_ACCOUNT", direction: IN)
   }
 `;

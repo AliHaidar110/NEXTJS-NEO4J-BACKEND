@@ -21,20 +21,49 @@ export default function Home() {
 					href="/favicon.ico"
 				/>
 			</Head>
-			<main>
-				<div>visit localhost:3000/api/graphql</div>
+			<main
+				style={{
+					width: "100%",
+					height: "100vh",
+					display: "flex",
+					alignItems: "center",
+					justifyContent: "center",
+					flexFlow: "column nowrap",
+					gap: "16px",
+				}}
+			>
+				{session ? (
+					<>
+						<p>Signed in as {session?.user?.email}</p>
+						<button
+							style={{
+								backgroundColor: "rgb(86 126 255 / 79%)",
+								padding: "8px 24px",
+								borderRadius: "55px",
+								color: "whitesmoke",
+							}}
+							onClick={() => signOut()}
+						>
+							Sign out
+						</button>
+					</>
+				) : (
+					<>
+						<p>Not signed in</p>
+						<button
+							style={{
+								backgroundColor: "rgb(86 126 255 / 79%)",
+								padding: "8px 24px",
+								borderRadius: "55px",
+								color: "whitesmoke",
+							}}
+							onClick={() => signIn()}
+						>
+							Sign in
+						</button>
+					</>
+				)}
 			</main>
-			{session ? (
-				<>
-					Signed in as {session?.user?.email} <br />
-					<button onClick={() => signOut()}>Sign out</button>
-				</>
-			) : (
-				<>
-					Not signed in <br />
-					<button onClick={() => signIn()}>Sign in</button>
-				</>
-			)}
 		</>
 	);
 }
